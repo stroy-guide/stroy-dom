@@ -122,7 +122,328 @@
         </div>
     </nav>
 
-    <!-- Остальной код сайта (без изменений) -->
+    <div id="home" class="page active">
+        <section class="hero">
+            <div class="container">
+                <h1>🏠 Всё о строительстве домов</h1>
+                <p>Рассчитайте стоимость дома за 1 минуту</p>
+                <a onclick="showPage('calculator')" class="cta-button">Рассчитать стоимость</a>
+                <div class="trust-badges">
+                    <div class="badge">1 минута</div>
+                    <div class="badge">PDF</div>
+                    <div class="badge">Цены 2026</div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container">
+                <h2>Разделы</h2>
+                <div class="cards-grid">
+                    <div class="card" onclick="showPage('technology')"><h3>Технологии</h3><p>Каркасные, кирпичные, газобетон, брус.</p></div>
+                    <div class="card" onclick="showPage('calculator')"><h3>Калькулятор</h3><p>Онлайн-расчёт цены дома.</p></div>
+                    <div class="card" onclick="showPage('blog')"><h3>📚 Блог</h3><p>Статьи о строительстве.</p></div>
+                    <div class="card" onclick="showPage('stages')"><h3>Этапы</h3><p>Пошаговый план строительства.</p></div>
+                    <div class="card" onclick="showPage('engineering')"><h3>Инженерия</h3><p>Электрика, вода, отопление.</p></div>
+                    <div class="card" onclick="showPage('finish')"><h3>Отделка</h3><p>Материалы для стен, полов.</p></div>
+                </div>
+            </div>
+        </section>
+        <section style="background: #f7fafc;">
+            <div class="container">
+                <h2>Вопросы</h2>
+                <div class="faq-item"><h3>Какая технология дешевле?</h3><p>Каркасная — от 25 тыс. ₽/м².</p></div>
+                <div class="faq-item"><h3>Сколько строить?</h3><p>Каркасник — 3–4 мес, газобетон — 5–6 мес.</p></div>
+            </div>
+        </section>
+    </div>
+
+    <div id="calculator" class="page">
+        <section class="page-header"><div class="container"><h1>Калькулятор</h1><p>Рассчитайте стоимость дома</p></div></section>
+        <section class="calculator-section">
+            <div class="container">
+                <div class="calculator">
+                    <div class="calc-row"><label>Площадь (м²)</label><input type="range" id="areaRange" min="50" max="500" value="120" step="10"><div class="range-value" id="areaValue">120 м²</div></div>
+                    <div class="calc-row"><label>Технология</label><select id="technologySelect"><option value="25000">Каркасный (25 000 ₽/м²)</option><option value="35000" selected>Газобетон (35 000 ₽/м²)</option><option value="45000">Кирпич (45 000 ₽/м²)</option><option value="40000">Брус (40 000 ₽/м²)</option></select></div>
+                    <div class="calc-row"><label>Фундамент</label><select id="foundation"><option value="1">Ленточный</option><option value="1.2">Плитный (+20%)</option><option value="0.9">Свайный (-10%)</option></select></div>
+                    <div class="calc-row"><label>Отделка</label><select id="finishSelect"><option value="1">Черновая</option><option value="1.3">Предчистовая (+30%)</option><option value="1.6">Чистовая (+60%)</option><option value="2">Премиум (+100%)</option></select></div>
+                    <div class="result-box"><h3>Стоимость</h3><div class="result-price" id="totalPrice">4 200 000 ₽</div><p class="result-note">* Ориентировочная</p></div>
+                    <button class="secondary-button" onclick="saveToPDF()">В PDF</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="technology" class="page">
+        <section class="page-header"><div class="container"><h1>Технологии строительства</h1><p>Сравнение всех технологий</p></div></section>
+        <section>
+            <div class="container">
+                <h2>Сравнение</h2>
+                <div class="tech-grid">
+                    <div class="tech-card"><h3>🏠 Каркасный</h3><p>Деревянный каркас с утеплителем.</p><h4>✅ Плюсы:</h4><ul><li>3–4 месяца</li><li>Низкая цена</li><li>Тепло</li></ul><h4>❌ Минусы:</h4><ul><li>30–50 лет</li><li>Горючесть</li></ul><div class="price-tag">25 000 – 60 000 ₽/м²</div></div>
+                    <div class="tech-card"><h3>🧱 Газобетон</h3><p>Блоки из ячеистого бетона.</p><h4>✅ Плюсы:</h4><ul><li>Прочность</li><li>Тепло</li><li>Огнеупорность</li></ul><h4>❌ Минусы:</h4><ul><li>Нужна отделка</li><li>Хрупкий</li></ul><div class="price-tag">35 000 – 70 000 ₽/м²</div></div>
+                    <div class="tech-card"><h3>🏛️ Кирпич</h3><p>Классическая технология.</p><h4>✅ Плюсы:</h4><ul><li>100+ лет</li><li>Прочность</li><li>Звукоизоляция</li></ul><h4>❌ Минусы:</h4><ul><li>Дорого</li><li>7–9 месяцев</li></ul><div class="price-tag">45 000 – 95 000 ₽/м²</div></div>
+                    <div class="tech-card"><h3>🌲 Брус</h3><p>Натуральное дерево.</p><h4>✅ Плюсы:</h4><ul><li>Экологичность</li><li>Красота</li><li>Тепло</li></ul><h4>❌ Минусы:</h4><ul><li>Усадка</li><li>Обработка</li></ul><div class="price-tag">40 000 – 80 000 ₽/м²</div></div>
+                </div>
+                <table class="data-table"><thead><tr><th>Параметр</th><th>Каркас</th><th>Газобетон</th><th>Кирпич</th><th>Брус</th></tr></thead><tbody><tr><td><strong>Срок</strong></td><td>3–4 мес</td><td>5–6 мес</td><td>7–9 мес</td><td>4–5 мес</td></tr><tr><td><strong>Срок службы</strong></td><td>30–50 лет</td><td>50–70 лет</td><td>100+ лет</td><td>40–60 лет</td></tr><tr><td><strong>Цена</strong></td><td>25–60 тыс. ₽</td><td>35–70 тыс. ₽</td><td>45–95 тыс. ₽</td><td>40–80 тыс. ₽</td></tr></tbody></table>
+                <div class="info-box" style="margin-top:50px;"><h4>💡 Какую выбрать?</h4><ul><li>Каркас — быстро и дёшево</li><li>Газобетон — оптимально</li><li>Кирпич — на века</li><li>Брус — эко-стиль</li></ul></div>
+            </div>
+        </section>
+        <section class="cta-section"><div class="container"><h2>Рассчитать стоимость</h2><a onclick="showPage('calculator')" class="cta-button">К калькулятору</a></div></section>
+    </div>
+
+    <div id="blog" class="page">
+        <section class="page-header"><div class="container"><h1>📚 Блог о строительстве</h1><p>Полезные статьи и советы</p></div></section>
+        <section>
+            <div class="container">
+                <div class="blog-grid">
+                    <div class="blog-card" onclick="showArticle(1)"><h3>Как построить дом своими руками</h3><p>Пошаговая инструкция, этапы, сроки.</p></div>
+                    <div class="blog-card" onclick="showArticle(2)"><h3>Фундамент: какой выбрать</h3><p>Ленточный, плитный, свайный — сравнение.</p></div>
+                    <div class="blog-card" onclick="showArticle(3)"><h3>Сколько стоит построить дом</h3><p>Реальные цены 2026, смета.</p></div>
+                    <div class="blog-card" onclick="showArticle(4)"><h3>Каркасник или газобетон</h3><p>Сравнение технологий.</p></div>
+                    <div class="blog-card" onclick="showArticle(5)"><h3>10 ошибок при строительстве</h3><p>Топ-10 ошибок и как избежать.</p></div>
+                    <div class="blog-card" onclick="showArticle(6)"><h3>Кровля: виды и цены</h3><p>Металлочерепица, мягкая, ондулин.</p></div>
+                    <div class="blog-card" onclick="showArticle(7)"><h3>Инструменты для стройки</h3><p>Что купить, а что арендовать.</p></div>
+                    <div class="blog-card" onclick="showArticle(8)"><h3>Где купить материалы</h3><p>Обзор магазинов и цены.</p></div>
+                    <div class="blog-card" onclick="showArticle(9)"><h3>Утепление дома</h3><p>Виды утеплителей, монтаж.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <div id="article1" class="page">
+            <section>
+                <div class="container">
+                    <a onclick="showPage('blog')" class="back-btn">← Назад к статьям</a>
+                    <div class="article-content">
+                        <h2>Как построить дом своими руками</h2>
+                        <p>Строительство дома своими руками экономит до 40% бюджета. Разберём все этапы.</p>
+                        <h3>Этапы:</h3>
+                        <ol>
+                            <li>Подготовка участка (1-2 недели)</li>
+                            <li>Фундамент (2-4 недели)</li>
+                            <li>Коробка (3-6 недель)</li>
+                            <li>Кровля (3-5 недель)</li>
+                            <li>Инженерия (2-4 недели)</li>
+                            <li>Отделка (4-8 недель)</li>
+                        </ol>
+                        <div class="info-box"><strong>💡 Совет:</strong> Оставьте 10-15% бюджета на непредвиденные!</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="article2" class="page">
+            <section>
+                <div class="container">
+                    <a onclick="showPage('blog')" class="back-btn">← Назад к статьям</a>
+                    <div class="article-content">
+                        <h2>Фундамент: какой выбрать</h2>
+                        <p>Виды фундаментов: ленточный, плитный, свайный.</p>
+                        <h3>Цены:</h3>
+                        <ul>
+                            <li>Ленточный: 3 000 – 5 000 ₽/м²</li>
+                            <li>Плитный: 4 000 – 7 000 ₽/м²</li>
+                            <li>Свайный: 2 500 – 4 000 ₽/м²</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="article3" class="page">
+            <section>
+                <div class="container">
+                    <a onclick="showPage('blog')" class="back-btn">← Назад к статьям</a>
+                    <div class="article-content">
+                        <h2>Сколько стоит построить дом</h2>
+                        <p>Средняя стоимость за м²:</p>
+                        <table class="data-table">
+                            <tr><th>Технология</th><th>Под ключ</th></tr>
+                            <tr><td>Каркасный</td><td>50 000 ₽</td></tr>
+                            <tr><td>Газобетон</td><td>65 000 ₽</td></tr>
+                            <tr><td>Кирпич</td><td>85 000 ₽</td></tr>
+                            <tr><td>Брус</td><td>70 000 ₽</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="article4" class="page">
+            <section>
+                <div class="container">
+                    <a onclick="showPage('blog')" class="back-btn">← Назад к статьям</a>
+                    <div class="article-content">
+                        <h2>Каркасник или газобетон</h2>
+                        <p>Сравнение двух популярных технологий.</p>
+                        <table class="data-table">
+                            <tr><th>Параметр</th><th>Каркас</th><th>Газобетон</th></tr>
+                            <tr><td>Срок</td><td>3-4 мес</td><td>5-6 мес</td></tr>
+                            <tr><td>Цена</td><td>25-60 тыс. ₽</td><td>35-70 тыс. ₽</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="article5" class="page">
+            <section>
+                <div class="container">
+                    <a onclick="showPage('blog')" class="back-btn">← Назад к статьям</a>
+                    <div class="article-content">
+                        <h2>10 ошибок при строительстве</h2>
+                        <ol>
+                            <li>Экономия на геологии</li>
+                            <li>Плохая гидроизоляция</li>
+                            <li>Нет вентиляции</li>
+                            <li>Экономия на утеплении</li>
+                            <li>Слабая электрика</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="article6" class="page">
+            <section>
+                <div class="container">
+                    <a onclick="showPage('blog')" class="back-btn">← Назад к статьям</a>
+                    <div class="article-content">
+                        <h2>Кровля: виды и цены</h2>
+                        <ul>
+                            <li>Металлочерепица: 500 – 1 200 ₽/м²</li>
+                            <li>Мягкая кровля: 400 – 1 500 ₽/м²</li>
+                            <li>Ондулин: 300 – 600 ₽/м²</li>
+                            <li>Профнастил: 350 – 800 ₽/м²</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="article7" class="page">
+            <section>
+                <div class="container">
+                    <a onclick="showPage('blog')" class="back-btn">← Назад к статьям</a>
+                    <div class="article-content">
+                        <h2>Инструменты для стройки</h2>
+                        <p>Что купить, а что арендовать.</p>
+                        <div class="info-box">
+                            <h4>🛒 Где купить?</h4>
+                            <ul>
+                                <li><a href="#" class="partner-link">AliExpress</a></li>
+                                <li><a href="#" class="partner-link">Ozon</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="article8" class="page">
+            <section>
+                <div class="container">
+                    <a onclick="showPage('blog')" class="back-btn">← Назад к статьям</a>
+                    <div class="article-content">
+                        <h2>Где купить материалы</h2>
+                        <p>Обзор магазинов стройматериалов.</p>
+                        <div class="info-box">
+                            <h4>🛒 Магазины:</h4>
+                            <ul>
+                                <li><a href="#" class="partner-link">Ozon</a></li>
+                                <li><a href="#" class="partner-link">Яндекс.Маркет</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="article9" class="page">
+            <section>
+                <div class="container">
+                    <a onclick="showPage('blog')" class="back-btn">← Назад к статьям</a>
+                    <div class="article-content">
+                        <h2>Утепление дома</h2>
+                        <p>Виды утеплителей и монтаж.</p>
+                        <div class="info-box">
+                            <h4>🛒 Где купить?</h4>
+                            <ul>
+                                <li><a href="#" class="partner-link">Ozon</a></li>
+                                <li><a href="#" class="partner-link">Леруа Мерлен</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="prices" class="page">
+        <section class="page-header"><div class="container"><h1>Цены</h1><p>Стоимость в 2026 году</p></div></section>
+        <section>
+            <div class="container">
+                <h2>По технологиям</h2>
+                <div class="price-grid">
+                    <div class="price-card"><h3>🏠 Каркасный</h3><div class="price">от 25 000 ₽/м²</div><p>Под ключ: 45 000 – 60 000 ₽/м²</p><div class="price-tag">Фундамент, каркас, кровля</div></div>
+                    <div class="price-card"><h3>🧱 Газобетон</h3><div class="price">от 35 000 ₽/м²</div><p>Под ключ: 55 000 – 70 000 ₽/м²</p><div class="price-tag">Фундамент, стены, фасад</div></div>
+                    <div class="price-card"><h3>🏛️ Кирпич</h3><div class="price">от 45 000 ₽/м²</div><p>Под ключ: 75 000 – 95 000 ₽/м²</p><div class="price-tag">Фундамент, стены, кровля</div></div>
+                    <div class="price-card"><h3>🌲 Брус</h3><div class="price">от 40 000 ₽/м²</div><p>Под ключ: 65 000 – 80 000 ₽/м²</p><div class="price-tag">Фундамент, брус, обработка</div></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="stages" class="page">
+        <section class="page-header"><div class="container"><h1>Этапы</h1><p>Пошаговый план</p></div></section>
+        <section>
+            <div class="container">
+                <h2>Последовательность</h2>
+                <div class="timeline">
+                    <div class="timeline-item"><h3>1. Подготовка</h3><span class="duration">1–2 недели</span><p>Расчистка, геодезия</p></div>
+                    <div class="timeline-item"><h3>2. Фундамент</h3><span class="duration">2–4 недели</span><p>Земляные работы, бетон</p></div>
+                    <div class="timeline-item"><h3>3. Стены</h3><span class="duration">3–6 недель</span><p>Кладка, перекрытия</p></div>
+                    <div class="timeline-item"><h3>4. Кровля</h3><span class="duration">3–5 недель</span><p>Стропила, покрытие</p></div>
+                    <div class="timeline-item"><h3>5. Инженерия</h3><span class="duration">2–4 недели</span><p>Электрика, вода</p></div>
+                    <div class="timeline-item"><h3>6. Отделка</h3><span class="duration">4–8 недель</span><p>Штукатурка, полы</p></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="engineering" class="page">
+        <section class="page-header"><div class="container"><h1>Инженерия</h1><p>Все системы</p></div></section>
+        <section>
+            <div class="container">
+                <h2>Системы</h2>
+                <div class="tech-grid">
+                    <div class="tech-card"><h3>⚡ Электрика</h3><p>Щиток, разводка, розетки.</p><div class="price-tag">800 – 1 500 ₽/м²</div></div>
+                    <div class="tech-card"><h3>💧 Водоснабжение</h3><p>Скважина, насос, трубы.</p><div class="price-tag">150 000 – 400 000 ₽</div></div>
+                    <div class="tech-card"><h3>🚽 Канализация</h3><p>Септик или ЛОС.</p><div class="price-tag">100 000 – 300 000 ₽</div></div>
+                    <div class="tech-card"><h3>🔥 Отопление</h3><p>Котёл, радиаторы.</p><div class="price-tag">300 000 – 800 000 ₽</div></div>
+                    <div class="tech-card"><h3>💨 Вентиляция</h3><p>Приточные клапаны.</p><div class="price-tag">50 000 – 200 000 ₽</div></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="finish" class="page">
+        <section class="page-header"><div class="container"><h1>Отделка</h1><p>Материалы и цены</p></div></section>
+        <section>
+            <div class="container">
+                <h2>Виды отделки</h2>
+                <div class="finish-grid">
+                    <div class="finish-card"><h3>🔨 Черновая</h3><p>Стяжка, штукатурка, шпаклёвка.</p><div class="price-tag">1 500 – 3 500 ₽/м²</div></div>
+                    <div class="finish-card"><h3>🎨 Стены</h3><p>Обои (300–1500 ₽/м²), покраска.</p><div class="price-tag">от 300 ₽/м²</div></div>
+                    <div class="finish-card"><h3>📦 Полы</h3><p>Ламинат, паркет, керамогранит.</p><div class="price-tag">от 800 ₽/м²</div></div>
+                    <div class="finish-card"><h3>⬆️ Потолки</h3><p>ГКЛ, натяжной, покраска.</p><div class="price-tag">от 500 ₽/м²</div></div>
+                    <div class="finish-card"><h3>🚿 Санузлы</h3><p>Плитка, сантехника.</p><div class="price-tag">150 000 – 400 000 ₽</div></div>
+                    <div class="finish-card"><h3>🚪 Двери</h3><p>Экошпон, МДФ, массив.</p><div class="price-tag">от 8 000 ₽/шт</div></div>
+                </div>
+                <div class="info-box" style="margin-top:50px;"><h4>💡 Советы</h4><ul><li>Планируйте отделку заранее</li><li>Покупайте на распродажах</li><li>Не экономьте на черновой</li><li>Оставляйте 10–15% на непредвиденные</li></ul></div>
+            </div>
+        </section>
+        <section class="cta-section"><div class="container"><h2>Рассчитать стоимость</h2><a onclick="showPage('calculator')" class="cta-button">К калькулятору</a></div></section>
+    </div>
 
     <footer>
         <div class="container">
